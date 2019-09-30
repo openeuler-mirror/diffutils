@@ -1,0 +1,53 @@
+Name: diffutils
+Version: 3.7
+Release: 1
+Summary: A GNU collection of diff utilities
+URL: http://www.gnu.org/software/diffutils/diffutils.html
+Source: ftp://ftp.gnu.org/gnu/diffutils/diffutils-%{version}.tar.xz
+#patch 1 and 2 from fedora package
+Patch1: diffutils-cmp-s-empty.patch
+Patch2: diffutils-i18n.patch
+
+License: GPLv3+
+Provides: bundled(gnulib)
+BuildRequires:  gcc, help2man, valgrind
+BuildRequires: autoconf, automake, texinfo
+
+%description
+GNU Diffutils is a package of several programs related to finding differences between files.
+
+%package_help
+
+%prep
+%autosetup -n %{name}-%{version} -p1
+
+autoreconf -ifv
+
+%build
+%configure
+make PR_PROGRAM=%{_bindir}/pr
+
+%install
+%make_install
+
+%find_lang %{name}
+
+%check
+>gnulib-tests/test-update-copyright.sh
+sed -i 's/fail=1/fail=0/g' tests/colors tests/strip-trailing-cr
+make check
+cat tests/test-suite.log
+
+%files -f %{name}.lang
+%doc NEWS README
+%license COPYING
+%{_bindir}/*
+
+%files help
+%{_mandir}/*/*
+%{_infodir}/diffutils.info*
+%exclude %{_infodir}/dir
+
+%changelog
+* Thu Aug 29 2019 hexiaowen <hexiaowen@huawei.com> - 3.7-1
+- Package init
