@@ -1,6 +1,6 @@
 Name: diffutils
 Version: 3.7
-Release: 1
+Release: 2
 Summary: A GNU collection of diff utilities
 URL: http://www.gnu.org/software/diffutils/diffutils.html
 Source: ftp://ftp.gnu.org/gnu/diffutils/diffutils-%{version}.tar.xz
@@ -10,7 +10,7 @@ Patch2: diffutils-i18n.patch
 
 License: GPLv3+
 Provides: bundled(gnulib)
-BuildRequires:  gcc, help2man, valgrind
+BuildRequires: gcc, help2man, valgrind,  gettext-devel
 BuildRequires: autoconf, automake, texinfo
 
 %description
@@ -49,5 +49,11 @@ cat tests/test-suite.log
 %exclude %{_infodir}/dir
 
 %changelog
+* Thu Oct 24 2019 shenyangyang<shenyangyang4@huawei.com> 3.7-2
+- Type:enhancement
+- ID:NA
+- SUG:NA
+- DESC:add build requires of gettext-devel
+
 * Thu Aug 29 2019 hexiaowen <hexiaowen@huawei.com> - 3.7-1
 - Package init
