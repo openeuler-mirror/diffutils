@@ -1,10 +1,9 @@
 Name: diffutils
 Version: 3.7
-Release: 2
+Release: 3
 Summary: A GNU collection of diff utilities
 URL: http://www.gnu.org/software/diffutils/diffutils.html
 Source: ftp://ftp.gnu.org/gnu/diffutils/diffutils-%{version}.tar.xz
-#patch 1 and 2 from fedora package
 Patch1: diffutils-cmp-s-empty.patch
 Patch2: diffutils-i18n.patch
 
@@ -49,6 +48,12 @@ cat tests/test-suite.log
 %exclude %{_infodir}/dir
 
 %changelog
+* Mon Nov 11 2019 shenyangyang<shenyangyang4@huawei.com> 3.7-3
+- Type:enhancement
+- ID:NA
+- SUG:NA
+- DESC:delete unneeded comments
+
 * Thu Oct 24 2019 shenyangyang<shenyangyang4@huawei.com> 3.7-2
 - Type:enhancement
 - ID:NA
