@@ -1,6 +1,6 @@
 Name: diffutils
 Version: 3.7
-Release: 4
+Release: 3
 Summary: A GNU collection of diff utilities
 URL: http://www.gnu.org/software/diffutils/diffutils.html
 Source: ftp://ftp.gnu.org/gnu/diffutils/diffutils-%{version}.tar.xz
@@ -9,8 +9,8 @@ Patch2: diffutils-i18n.patch
 
 License: GPLv3+
 Provides: bundled(gnulib)
-BuildRequires: gcc help2man valgrind gettext-devel
-BuildRequires: autoconf automake gcc_secure texinfo 
+BuildRequires: gcc, help2man, valgrind,  gettext-devel
+BuildRequires: autoconf, automake, texinfo
 
 %description
 GNU Diffutils is a package of several programs related to finding differences between files.
@@ -48,12 +48,6 @@ cat tests/test-suite.log
 %exclude %{_infodir}/dir
 
 %changelog
-* Mon Mar 23 2020 yuxiangyang<yuxiangyang4@huawei.com> 3.7-4
-- Type:bugfix
-- ID:NA
-- SUG:NA
-- DESC:add BuildRequires:gcc_secure to fix src.rpm build error
-
 * Mon Nov 11 2019 shenyangyang<shenyangyang4@huawei.com> 3.7-3
 - Type:enhancement
 - ID:NA
