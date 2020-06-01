@@ -9,7 +9,10 @@ Patch2: diffutils-i18n.patch
 
 License: GPLv3+
 Provides: bundled(gnulib)
-BuildRequires: gcc, help2man, valgrind,  gettext-devel
+BuildRequires: gcc, help2man, gettext-devel
+%ifarch %{valgrind_arches}
+BuildRequires: valgrind
+%endif
 BuildRequires: autoconf, automake, texinfo
 
 %description
