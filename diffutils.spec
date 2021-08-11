@@ -1,12 +1,12 @@
 Name: diffutils
 Version: 3.7
-Release: 4
+Release: 5
 Summary: A GNU collection of diff utilities
 URL: http://www.gnu.org/software/diffutils/diffutils.html
 Source: ftp://ftp.gnu.org/gnu/diffutils/diffutils-%{version}.tar.xz
 Patch1: diffutils-cmp-s-empty.patch
 Patch2: diffutils-i18n.patch
-
+Patch3: gnulib-c-stack.patch
 License: GPLv3+
 Provides: bundled(gnulib)
 BuildRequires: gcc, help2man, gettext-devel
@@ -54,6 +54,12 @@ cat tests/test-suite.log
 %exclude %{_infodir}/dir
 
 %changelog
+* Wed Aug 11 2021 wangjie<wangjie375@huawei.com> 3.7-5
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:fix missing binary operator before token "("
+
 * Wed Mar 24 2021 zoulin<zoulin13@huawei.com> 3.7-4
 - Type:enhancement
 - ID:NA
