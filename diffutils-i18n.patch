@@ -11,8 +11,8 @@ diff -up diffutils-3.6/src/diff.c.i18n diffutils-3.6/src/diff.c
     recursively.  */
  static bool recursive;
 @@ -298,6 +300,13 @@ main (int argc, char **argv)
-   excluded = new_exclude ();
    presume_output_tty = false;
+   xstdopen ();
  
 +#ifdef HANDLE_MULTIBYTE
 +  if (MB_CUR_MAX > 1)
@@ -398,15 +398,15 @@ diff -up diffutils-3.6/src/io.c.i18n diffutils-3.6/src/io.c
 +
        /* Hash this line until we find a newline.  */
        switch (ig_white_space)
- 	{
+         {
 @@ -397,7 +708,7 @@ find_and_hash_each_line (struct file_dat
- 	    else if (!diff_length_compare_anyway)
- 	      continue;
+             else if (!diff_length_compare_anyway)
+               continue;
  
--	    if (! lines_differ (eqline, ip))
-+	    if (! lines_differ (eqline, eqs[i].length + 1, ip, length + 1))
- 	      break;
- 	  }
+-            if (! lines_differ (eqline, ip))
++            if (! lines_differ (eqline, eqs[i].length + 1, ip, length + 1))
+               break;
+           }
  
 diff -up diffutils-3.6/src/util.c.i18n diffutils-3.6/src/util.c
 --- diffutils-3.6/src/util.c.i18n	2017-05-18 18:39:59.000000000 +0100
