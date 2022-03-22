@@ -1,0 +1,27 @@
+From 0c3b6966fec92957c9d0e0ed0d83bc0716641d66 Mon Sep 17 00:00:00 2001
+From: panxiaohe <panxh.life@foxmail.com>
+Date: Tue, 22 Mar 2022 10:46:34 +0800
+Subject: [PATCH] diff3: set flagging to true in -X option
+
+The logic of diff3 -X option was changed because
+commit 4c92a4 changed "FALLTHROUGH" to "break".
+
+---
+ src/diff3.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/diff3.c b/src/diff3.c
+index 6be7e3c..fc4adbc 100644
+--- a/src/diff3.c
++++ b/src/diff3.c
+@@ -304,6 +304,7 @@ main (int argc, char **argv)
+           break;
+         case 'X':
+           overlap_only = true;
++          flagging = true;
+           incompat |= 1 << OPTION_X;
+           break;
+         case 'E':
+-- 
+1.8.3.1
+

@@ -1,11 +1,13 @@
 Name: diffutils
 Version: 3.8
-Release: 1
+Release: 2
 Summary: A GNU collection of diff utilities
 URL: http://www.gnu.org/software/diffutils/diffutils.html
 Source: ftp://ftp.gnu.org/gnu/diffutils/diffutils-%{version}.tar.xz
 Patch1: diffutils-cmp-s-empty.patch
 Patch2: diffutils-i18n.patch
+Patch3: diff3-set-flagging-to-true-in-X-option.patch
+
 License: GPLv3+
 Provides: bundled(gnulib)
 BuildRequires: gcc, help2man, gettext-devel
@@ -53,31 +55,37 @@ cat tests/test-suite.log
 %exclude %{_infodir}/dir
 
 %changelog
-* Tue Nov 30 2021 zoulin<zoulin13@huawei.com> 3.8-1
+* Tue Mar 22 2022 panxiaohe<panxh.life@foxmail.com> - 3.8-2
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:set flagging to true in diff3 -X option
+
+* Tue Nov 30 2021 zoulin<zoulin13@huawei.com> - 3.8-1
 - Type:enhancement
 - ID:NA
 - SUG:NA
 - DESC:update version to 3.8
 
-* Wed Aug 11 2021 wangjie<wangjie375@huawei.com> 3.7-5
+* Wed Aug 11 2021 wangjie<wangjie375@huawei.com> - 3.7-5
 - Type:bugfix
 - ID:NA
 - SUG:NA
 - DESC:fix missing binary operator before token "("
 
-* Wed Mar 24 2021 zoulin<zoulin13@huawei.com> 3.7-4
+* Wed Mar 24 2021 zoulin<zoulin13@huawei.com> - 3.7-4
 - Type:enhancement
 - ID:NA
 - SUG:NA
 - DESC:add -fsign-char for aarch64 for test-localeconv
 
-* Mon Nov 11 2019 shenyangyang<shenyangyang4@huawei.com> 3.7-3
+* Mon Nov 11 2019 shenyangyang<shenyangyang4@huawei.com> - 3.7-3
 - Type:enhancement
 - ID:NA
 - SUG:NA
 - DESC:delete unneeded comments
 
-* Thu Oct 24 2019 shenyangyang<shenyangyang4@huawei.com> 3.7-2
+* Thu Oct 24 2019 shenyangyang<shenyangyang4@huawei.com> - 3.7-2
 - Type:enhancement
 - ID:NA
 - SUG:NA
