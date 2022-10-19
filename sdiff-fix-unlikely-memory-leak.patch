@@ -1,0 +1,41 @@
+From f2e2b4d3c3288e6cae3918fc432bdab8c0c485b7 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Sun, 22 Aug 2021 13:54:04 -0700
+Subject: [PATCH] sdiff: fix unlikely memory leak
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/sdiff.c (temporary_file): Fix memory leak when mkstemp fails.
+Don’t assume temporary file name length fits in ‘int’.
+---
+ src/sdiff.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/sdiff.c b/src/sdiff.c
+index 11e4da9..ab12987 100644
+--- a/src/sdiff.c
++++ b/src/sdiff.c
+@@ -1163,11 +1163,14 @@ temporary_file (void)
+ {
+   char const *tmpdir = getenv (TMPDIR_ENV);
+   char const *dir = tmpdir ? tmpdir : P_tmpdir;
+-  char *buf = xmalloc (strlen (dir) + 1 + 5 + 6 + 1);
+-  int fd;
+-  sprintf (buf, "%s/sdiffXXXXXX", dir);
+-  fd = mkstemp (buf);
+-  if (0 <= fd)
++  size_t dirlen = strlen (dir);
++  char *buf = xmalloc (dirlen + 1 + 5 + 6 + 1);
++  memcpy (buf, dir, dirlen);
++  strcpy (buf + dirlen, "/sdiffXXXXXX");
++  int fd = mkstemp (buf);
++  if (fd < 0)
++    free (buf);
++  else
+     tmpname = buf;
+   return fd;
+ }
+-- 
+2.27.0
+
