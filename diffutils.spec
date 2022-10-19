@@ -1,12 +1,13 @@
 Name: diffutils
 Version: 3.8
-Release: 2
+Release: 3
 Summary: A GNU collection of diff utilities
 URL: http://www.gnu.org/software/diffutils/diffutils.html
 Source: ftp://ftp.gnu.org/gnu/diffutils/diffutils-%{version}.tar.xz
 Patch1: diffutils-cmp-s-empty.patch
 Patch2: diffutils-i18n.patch
 Patch3: diff3-set-flagging-to-true-in-X-option.patch
+Patch4: sdiff-fix-unlikely-memory-leak.patch
 
 License: GPLv3+
 Provides: bundled(gnulib)
@@ -55,6 +56,12 @@ cat tests/test-suite.log
 %exclude %{_infodir}/dir
 
 %changelog
+* Wed Oct 19 2022 zhangruifang <zhangruifang1@h-partners.com> - 3.8-3
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:fix unlikely memory leak
+
 * Tue Mar 22 2022 panxiaohe<panxh.life@foxmail.com> - 3.8-2
 - Type:bugfix
 - ID:NA
