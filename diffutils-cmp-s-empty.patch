@@ -1,3 +1,6 @@
+Reference:https://src.fedoraproject.org/rpms/diffutils/blob/rawhide/f/diffutils-cmp-s-empty.patch
+Conflict:NA
+
 diff -up diffutils-3.6/src/cmp.c.cmp-s-empty diffutils-3.6/src/cmp.c
 --- diffutils-3.6/src/cmp.c.cmp-s-empty	2017-05-18 18:39:59.000000000 +0100
 +++ diffutils-3.6/src/cmp.c	2017-05-22 10:53:28.477147864 +0100
