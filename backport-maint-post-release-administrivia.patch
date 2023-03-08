@@ -1,0 +1,45 @@
+From aa13187f2a982a2d3d46c93cd08691960915ac74 Mon Sep 17 00:00:00 2001
+From: Jim Meyering <meyering@meta.com>
+Date: Sun, 15 Jan 2023 13:25:29 -0800
+Subject: maint: post-release administrivia
+
+* NEWS: Add header line for next release.
+* cfg.mk (old_NEWS_hash): Auto-update.
+
+Reference:https://git.savannah.gnu.org/cgit/diffutils.git/commit/?id=aa13187f2a982a2d3d46c93cd08691960915ac74
+Conflict:remove change on .prev-version
+
+---
+ NEWS          | 3 +++
+ cfg.mk        | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index b410596..ad9c6cc 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,5 +1,8 @@
+ GNU diffutils NEWS                                    -*- outline -*-
+ 
++* Noteworthy changes in release ?.? (????-??-??) [?]
++
++
+ * Noteworthy changes in release 3.9 (2023-01-15) [stable]
+ 
+ ** Bug fixes
+diff --git a/cfg.mk b/cfg.mk
+index 142a9ce..3c10efb 100644
+--- a/cfg.mk
++++ b/cfg.mk
+@@ -36,7 +36,7 @@ announcement_Cc_ = $(translation_project_), $(PACKAGE)-devel@gnu.org
+ # Now that we have better tests, make this the default.
+ export VERBOSE = yes
+ 
+-old_NEWS_hash = 94e919f647d397a84992078ccedba212
++old_NEWS_hash = cf070086af56e7394cc5a0c862d0cd11
+ 
+ # Tell maint.mk's syntax-check rules that diff gets config.h directly or
+ # via diff.h or system.h.
+-- 
+cgit v1.1
+
