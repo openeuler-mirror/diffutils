@@ -1,12 +1,15 @@
 Name: diffutils
 Version: 3.9
-Release: 1
+Release: 2
 Summary: A GNU collection of diff utilities
 URL: http://www.gnu.org/software/diffutils/diffutils.html
 Source: ftp://ftp.gnu.org/gnu/diffutils/diffutils-%{version}.tar.xz
 Patch1: diffutils-cmp-s-empty.patch
 Patch2: diffutils-i18n.patch
 Patch3: diff3-set-flagging-to-true-in-X-option.patch
+
+Patch4: backport-maint-post-release-administrivia.patch
+Patch5: backport-diff-fix-bug-where--D-does-not-work.patch
 
 License: GPLv3+
 Provides: bundled(gnulib)
@@ -55,6 +58,12 @@ cat tests/test-suite.log
 %exclude %{_infodir}/dir
 
 %changelog
+* Wed Mar 8 2023 Jiayi Chen <chenjiayi22@huawei.com> - 3.9-2
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:fix diff -D option failed
+
 * Sat Jan 28 2023 Jiayi Chen <chenjiayi22@huawei.com> - 3.9-1
 - Type:enhancement
 - ID:NA
