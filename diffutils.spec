@@ -1,6 +1,6 @@
 Name: diffutils
 Version: 3.9
-Release: 2
+Release: 3
 Summary: A GNU collection of diff utilities
 URL: http://www.gnu.org/software/diffutils/diffutils.html
 Source: ftp://ftp.gnu.org/gnu/diffutils/diffutils-%{version}.tar.xz
@@ -30,7 +30,7 @@ GNU Diffutils is a package of several programs related to finding differences be
 autoreconf -ifv
 
 %build
-%ifarch aarch64
+%ifarch aarch64 riscv64
 CFLAGS="$RPM_OPT_FLAGS -fsigned-char"
 %endif
 %configure
@@ -58,6 +58,9 @@ cat tests/test-suite.log
 %exclude %{_infodir}/dir
 
 %changelog
+* Tue May 23 2023 yoo <sunyuechi@iscas.ac.cn> - 3.9-3
+- add riscv support
+
 * Wed Mar 8 2023 Jiayi Chen <chenjiayi22@huawei.com> - 3.9-2
 - Type:bugfix
 - ID:NA
